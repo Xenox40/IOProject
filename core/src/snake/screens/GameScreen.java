@@ -1,9 +1,13 @@
 package snake.screens;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -74,6 +78,11 @@ public class GameScreen implements Screen {
             _font.draw(_game.batch(), _gameManager.gameWon() ? "YOU WON!" : "YOU LOST!", WIDTH / 3f, HEIGHT / 5f * 4);
             _stage.act();
             _stage.draw();
+            if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER) || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+                _gameManager.restart();
+            } else if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
+                Gdx.app.exit();
+            }
         }
 
         _game.batch().end();
