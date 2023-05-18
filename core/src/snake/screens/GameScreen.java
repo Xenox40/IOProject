@@ -69,7 +69,8 @@ public class GameScreen implements Screen {
 
         _gameManager.draw();
         _pointImage.draw(_game.batch(), 1.0f);
-        _font.draw(_game.batch(), Integer.toString(_gameManager.getScore()), _pointImage.getX() + 2.3f * CELL_SIZE, _pointImage.getY() + 1.3f * CELL_SIZE);
+        _font.draw(_game.batch(), Integer.toString(_gameManager.getScore()), _pointImage.getX() + 2.3f * CELL_SIZE,
+                _pointImage.getY() + 1.3f * CELL_SIZE);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();

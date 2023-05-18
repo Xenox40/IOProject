@@ -2,10 +2,7 @@ package snake.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import snake.factories.ExpiringPickupFactory;
-import snake.factories.RandomExpiringPickupFactory;
-import snake.factories.SpeedDownFactory;
-import snake.factories.SpeedUpFactory;
+import snake.factories.*;
 import snake.game.controllers.SnakeKeyboardController;
 import snake.game.data.GameData;
 import snake.game.entities.Board;
@@ -25,7 +22,8 @@ public class GameManager {
     private final Array<GameSystem> systems = new Array<>();
     public GameManager(SpriteBatch batch) {
         _batch = batch;
-        _pickupFactory = new RandomExpiringPickupFactory(new SpeedUpFactory(), new SpeedDownFactory());
+        _pickupFactory = new RandomExpiringPickupFactory(new SpeedDownFactory(), new SpeedUpFactory(),
+                new DirectionReverseFactory());
         init();
     }
 
@@ -35,13 +33,14 @@ public class GameManager {
         var snakeController = new SnakeKeyboardController(snake);
 
         _gameData = new GameData(board, snake,
-                maxExpiringPickups, maxPointPickups,
+                snakeController, maxExpiringPickups, maxPointPickups,
                 initialMoveCoolDown, initialPickupCoolDown, pickupChance);
 
-        systems.add(new SnakeMovementSystem(_gameData, snakeController));
+        systems.add(new SnakeMovementSystem(_gameData));
         systems.add(new CollisionSystem(_gameData));
         systems.add(new PointPickupSystem(_gameData));
         systems.add(new ExpiringPickupSystem(_gameData, _pickupFactory));
+        systems.add(new EffectsSystem(_gameData));
     }
 
     public void step(float delta) {

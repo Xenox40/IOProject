@@ -8,6 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Disposable;
 import snake.game.entities.cells.Cell;
 import snake.game.entities.cells.pickup.PointCell;
+import snake.game.entities.cells.pickup.expiringPickup.DirectionReverseCell;
 import snake.game.entities.cells.pickup.expiringPickup.SpeedDownCell;
 import snake.game.entities.cells.pickup.expiringPickup.SpeedUpCell;
 import snake.game.entities.cells.snake.SnakeBodyCell;
@@ -34,6 +35,9 @@ public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> SpeedDownTexture =
             new AssetDescriptor<>("pickup/speeddown.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> DirectionsReverse =
+            new AssetDescriptor<>("pickup/directionsreverse.png", Texture.class);
+
     public static final AssetDescriptor<BitmapFont> MonoFont =
             new AssetDescriptor<>("fonts/Mono.fnt", BitmapFont.class);
 
@@ -59,6 +63,7 @@ public class Assets implements Disposable {
         _manager.load(PointTexture);
         _manager.load(SpeedUpTexture);
         _manager.load(SpeedDownTexture);
+        _manager.load(DirectionsReverse);
         _manager.load(MonoFont);
         _manager.load(ComicSkin);
     }
@@ -88,6 +93,9 @@ public class Assets implements Disposable {
         }
         if(obj instanceof SpeedDownCell) {
             return _manager.get(SpeedDownTexture);
+        }
+        if(obj instanceof DirectionReverseCell) {
+            return _manager.get(DirectionsReverse);
         }
         return null;
     }

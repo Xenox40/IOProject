@@ -27,9 +27,7 @@ public class Snake {
         }
         _direction = Right;
     }
-    /*
-    returns position of last bodyCell before move
-     */
+
     public void move(int width, int height) {
         var lastBodyCell = _cells.get(_cells.size - 1);
         lastPosX = lastBodyCell.getX();

@@ -10,4 +10,6 @@ public abstract class SnakeController {
     }
 
     public abstract void handleInputEvent();
+
+    public abstract void reverseDirections();
 }

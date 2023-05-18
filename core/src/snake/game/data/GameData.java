@@ -1,14 +1,20 @@
 package snake.game.data;
 
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Queue;
+import snake.game.controllers.SnakeController;
 import snake.game.entities.Board;
 import snake.game.entities.Snake;
 import snake.game.entities.cells.pickup.PointCell;
 import snake.game.entities.cells.pickup.expiringPickup.ExpiringPickupCell;
+import snake.game.entities.effects.Effect;
 
 public class GameData {
     public final Board board;
     public final Snake snake;
+    public final SnakeController controller;
+    public final Array<Effect> appliedEffects = new Array<>();
+    public final Queue<Effect> queuedEffects = new Queue<>();
     public int score;
     public final int maxExpiringPickups, maxPointPickups;
     public float moveCoolDown;
@@ -19,10 +25,11 @@ public class GameData {
     public final Array<PointCell> pointPickups = new Array<>();
     public final Array<ExpiringPickupCell> expiringPickups = new Array<>();
 
-    public GameData(Board board, Snake snake, int maxPickups, int maxPointPickups,
+    public GameData(Board board, Snake snake, SnakeController controller, int maxPickups, int maxPointPickups,
                     float moveCoolDown, float pickupCoolDown, float pickupChance) {
         this.board = board;
         this.snake = snake;
+        this.controller = controller;
         this.maxExpiringPickups = maxPickups;
         this.maxPointPickups = maxPointPickups;
         this.moveCoolDown = moveCoolDown;
