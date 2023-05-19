@@ -72,6 +72,12 @@ public class Snake {
     public void increaseSize() {
         _cells.add(new SnakeBodyCell(lastPosX, lastPosY));
     }
+    public void decreaseSize() {
+        _cells.removeIndex(_cells.size - 1);
+        var lastBodyCell = _cells.get(_cells.size - 1);
+        lastPosX = lastBodyCell.getX();
+        lastPosY = lastBodyCell.getY();
+    }
 
     public int getSize() {
         return _cells.size;

@@ -25,7 +25,8 @@ public class GameManager {
         _batch = batch;
         _pickupFactory = new RandomExpiringPickupFactory(
                 new SpeedDownFactory(), new SpeedUpFactory(), new DirectionReverseFactory(),
-                new GodModeFactory(), new MorePickupsFactory(), new LessPickupsFactory()
+                new GodModeFactory(), new MorePickupsFactory(), new LessPickupsFactory(),
+                new NegativePointFactory()
         );
         init();
     }
