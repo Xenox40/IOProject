@@ -13,6 +13,8 @@ public class GameData {
     public final Board board;
     public final Snake snake;
     public final SnakeController controller;
+
+    public boolean GodMode;
     public final Array<Effect> appliedEffects = new Array<>();
     public final Queue<Effect> queuedEffects = new Queue<>();
     public int score;

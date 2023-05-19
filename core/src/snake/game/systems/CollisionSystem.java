@@ -12,7 +12,7 @@ public class CollisionSystem implements GameSystem {
 
     @Override
     public void act(float delta) {
-        if(_gameData.gameEnded) return;
+        if(_gameData.gameEnded || _gameData.GodMode) return;
 
         if(CollisionChecker.isCollidingWithItself(_gameData.snake)) {
             _gameData.snake.setDead();

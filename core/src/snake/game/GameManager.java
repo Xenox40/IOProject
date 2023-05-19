@@ -23,7 +23,7 @@ public class GameManager {
     public GameManager(SpriteBatch batch) {
         _batch = batch;
         _pickupFactory = new RandomExpiringPickupFactory(new SpeedDownFactory(), new SpeedUpFactory(),
-                new DirectionReverseFactory());
+                new DirectionReverseFactory(), new GodModeFactory());
         init();
     }
 

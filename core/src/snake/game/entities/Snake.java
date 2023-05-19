@@ -102,6 +102,12 @@ public class Snake {
         }
     }
 
+    public void setAlpha(float alpha) {
+        for(var cell : _cells) {
+            cell.setAlpha(alpha);
+        }
+    }
+
     public SnakeHeadCell getHead() {
         return (SnakeHeadCell) _cells.get(0);
     }

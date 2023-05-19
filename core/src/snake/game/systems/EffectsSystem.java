@@ -2,6 +2,7 @@ package snake.game.systems;
 
 import com.badlogic.gdx.utils.Array;
 import snake.game.data.GameData;
+import snake.game.entities.effects.ActingEffect;
 import snake.game.entities.effects.NonRenewableEffect;
 import snake.game.entities.effects.RenewableEffect;
 
@@ -24,6 +25,8 @@ public class EffectsSystem implements GameSystem {
             if(effect.timeLeft() <= 0) {
                 effect.expire(_gameData);
                 _gameData.appliedEffects.removeValue(effect, true);
+            } else if(effect instanceof ActingEffect actingEffect) {
+                actingEffect.act(_gameData);
             }
         }
     }
