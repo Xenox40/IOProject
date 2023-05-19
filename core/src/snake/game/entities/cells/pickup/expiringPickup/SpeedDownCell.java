@@ -10,8 +10,6 @@ public class SpeedDownCell extends ExpiringPickupCell {
 
     @Override
     public void act(GameData gameData) {
-        if(gameData.moveCoolDown < 0.2f) {
-            gameData.moveCoolDown += 0.01f;
-        }
+        gameData.moveCoolDown = Math.min(gameData.maxMoveCoolDown, gameData.moveCoolDown + 0.01f);
     }
 }

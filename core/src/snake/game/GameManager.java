@@ -13,8 +13,9 @@ import snake.game.systems.*;
 public class GameManager {
     private final SpriteBatch _batch;
     private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3, initialLives = 1,
-            initialMaxPointPickups = 2, initialMaxExpiringPickups = 2, minPointPickups = 1, minExpiringPickups = 1;
-    private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f;
+            initialMaxPointPickups = 2, initialMaxExpiringPickups = 3, minPointPickups = 1, minExpiringPickups = 1;
+    private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f,
+            minMoveCoolDown = 0.05f, maxMoveCoolDown = 0.2f, minPickupCoolDown = 1.0f;
 
     private GameData _gameData;
 
@@ -27,7 +28,8 @@ public class GameManager {
                 new SpeedDownFactory(), new SpeedUpFactory(), new DirectionReverseFactory(),
                 new GodModeFactory(), new MorePickupsFactory(), new LessPickupsFactory(),
                 new NegativePointFactory(), new HPIncreaseFactory(), new HPDecreaseFactory(),
-                new BombFactory(), new MorePointsFactory(), new LessPointsFactory()
+                new BombFactory(), new MorePointsFactory(), new LessPointsFactory(),
+                new MoreFrequentPickupsFactory(), new LessFrequentPickupsFactory()
         );
         init();
     }
@@ -37,9 +39,12 @@ public class GameManager {
         var snake = new Snake(initialSnakeSize - 1, boardHeight / 2, initialSnakeSize);
         var snakeController = new SnakeKeyboardController(snake);
 
-        _gameData = new GameData(board, snake,
-                snakeController, initialMaxExpiringPickups, initialMaxPointPickups,
-                minExpiringPickups, minPointPickups, initialMoveCoolDown, initialPickupCoolDown, pickupChance, initialLives);
+        _gameData = new GameData(
+                board, snake, snakeController, initialMaxExpiringPickups, initialMaxPointPickups,
+                minExpiringPickups, minPointPickups, initialMoveCoolDown, initialPickupCoolDown,
+                pickupChance, initialLives, minMoveCoolDown, maxMoveCoolDown,
+                minPickupCoolDown
+        );
 
         systems.add(new SnakeMovementSystem(_gameData));
         systems.add(new CollisionSystem(_gameData));

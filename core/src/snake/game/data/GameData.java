@@ -13,25 +13,21 @@ public class GameData {
     public final Board board;
     public final Snake snake;
     public final SnakeController controller;
-
-    public boolean GodMode;
-    public int lives;
-    public final Array<Effect> appliedEffects = new Array<>();
-    public final Queue<Effect> queuedEffects = new Queue<>();
-    public int score;
-    public int maxExpiringPickups, maxPointPickups;
-
-    public final int minExpiringPickups, minPointPickups;
-    public float moveCoolDown;
-    public float pickupCoolDown, pickupChance;
-
-    public boolean gameEnded;
-
     public final Array<PointCell> pointPickups = new Array<>();
     public final Array<ExpiringPickupCell> expiringPickups = new Array<>();
+    public final Array<Effect> appliedEffects = new Array<>();
+    public final Queue<Effect> queuedEffects = new Queue<>();
+    public boolean GodMode, gameEnded;
+    public int maxExpiringPickups, maxPointPickups, score, lives;
+
+    public final int minExpiringPickups, minPointPickups;
+    public float moveCoolDown, pickupCoolDown;
+    public final float pickupChance, minMoveCoolDown, maxMoveCoolDown, minPickupCoolDown;
+
+
 
     public GameData(Board board, Snake snake, SnakeController controller, int maxPickups, int maxPointPickups,
-                    int minExpiringPickups, int minPointPickups, float moveCoolDown, float pickupCoolDown, float pickupChance, int lives) {
+                    int minExpiringPickups, int minPointPickups, float moveCoolDown, float pickupCoolDown, float pickupChance, int lives, float minMoveCoolDown, float maxMoveCooldown, float minPickupCoolDown) {
         this.board = board;
         this.snake = snake;
         this.controller = controller;
@@ -43,5 +39,8 @@ public class GameData {
         this.pickupCoolDown = pickupCoolDown;
         this.pickupChance = pickupChance;
         this.lives = lives;
+        this.minMoveCoolDown = minMoveCoolDown;
+        this.maxMoveCoolDown = maxMoveCooldown;
+        this.minPickupCoolDown = minPickupCoolDown;
     }
 }

@@ -57,6 +57,12 @@ public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> LessPointsTexture =
             new AssetDescriptor<>("pickup/lesspoints.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> MoreFrequentPickupsTexture =
+            new AssetDescriptor<>("pickup/morefrequentpickups.png", Texture.class);
+
+    public static final AssetDescriptor<Texture> LessFrequentPickupsTexture =
+            new AssetDescriptor<>("pickup/lessfrequentpickups.png", Texture.class);
+
     public static final AssetDescriptor<BitmapFont> MonoFont =
             new AssetDescriptor<>("fonts/Mono.fnt", BitmapFont.class);
 
@@ -90,6 +96,8 @@ public class Assets implements Disposable {
         _manager.load(MorePointsTexture);
         _manager.load(LessPointsTexture);
         _manager.load(NegativePointTexture);
+        _manager.load(MoreFrequentPickupsTexture);
+        _manager.load(LessFrequentPickupsTexture);
         _manager.load(MonoFont);
         _manager.load(ComicSkin);
     }
@@ -143,6 +151,12 @@ public class Assets implements Disposable {
         }
         if(obj instanceof LessPointsCell) {
             return _manager.get(LessPointsTexture);
+        }
+        if(obj instanceof MoreFrequentPickupsCell) {
+            return _manager.get(MoreFrequentPickupsTexture);
+        }
+        if(obj instanceof LessFrequentPickupsCell) {
+            return _manager.get(LessFrequentPickupsTexture);
         }
         return null;
     }
