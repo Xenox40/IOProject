@@ -55,7 +55,7 @@ public class ExpiringPickupSystem implements GameSystem {
 
     private boolean canBePickupAdded() {
         if(_lastPickup < _gameData.pickupCoolDown) return false;
-        if(_gameData.expiringPickups.size + 1 > _gameData.maxExpiringPickups || _gameData.gameEnded) return false;
+        if(_gameData.expiringPickups.size >= _gameData.maxExpiringPickups || _gameData.gameEnded) return false;
 
         return _gameData.snake.getSize() + _gameData.pointPickups.size + _gameData.expiringPickups.size + 1
                 <= _gameData.board.getWidth() * _gameData.board.getHeight();

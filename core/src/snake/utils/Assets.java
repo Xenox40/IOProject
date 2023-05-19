@@ -8,10 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Disposable;
 import snake.game.entities.cells.Cell;
 import snake.game.entities.cells.pickup.PointCell;
-import snake.game.entities.cells.pickup.expiringPickup.DirectionReverseCell;
-import snake.game.entities.cells.pickup.expiringPickup.GodModeCell;
-import snake.game.entities.cells.pickup.expiringPickup.SpeedDownCell;
-import snake.game.entities.cells.pickup.expiringPickup.SpeedUpCell;
+import snake.game.entities.cells.pickup.expiringPickup.*;
 import snake.game.entities.cells.snake.SnakeBodyCell;
 import snake.game.entities.cells.snake.SnakeHeadCell;
 import snake.game.entities.cells.terrain.BrightTerrainCell;
@@ -42,6 +39,12 @@ public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> GodModeTexture =
             new AssetDescriptor<>("pickup/godmode.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> MorePickupsTexture =
+            new AssetDescriptor<>("pickup/morepickups.png", Texture.class);
+
+    public static final AssetDescriptor<Texture> LessPickupsTexture =
+            new AssetDescriptor<>("pickup/lesspickups.png", Texture.class);
+
     public static final AssetDescriptor<BitmapFont> MonoFont =
             new AssetDescriptor<>("fonts/Mono.fnt", BitmapFont.class);
 
@@ -68,6 +71,8 @@ public class Assets implements Disposable {
         _manager.load(SpeedUpTexture);
         _manager.load(SpeedDownTexture);
         _manager.load(GodModeTexture);
+        _manager.load(MorePickupsTexture);
+        _manager.load(LessPickupsTexture);
         _manager.load(DirectionsReverseTexture);
         _manager.load(MonoFont);
         _manager.load(ComicSkin);
@@ -104,6 +109,12 @@ public class Assets implements Disposable {
         }
         if(obj instanceof GodModeCell) {
             return _manager.get(GodModeTexture);
+        }
+        if(obj instanceof MorePickupsCell) {
+            return _manager.get(MorePickupsTexture);
+        }
+        if(obj instanceof LessPickupsCell) {
+            return _manager.get(LessPickupsTexture);
         }
         return null;
     }

@@ -12,9 +12,10 @@ import snake.game.systems.*;
 
 public class GameManager {
     private final SpriteBatch _batch;
-    private static final int boardWidth = 16, boardHeight = 16, maxPointPickups = 2, maxExpiringPickups = 2;
-    private static final int initialSnakeSize = 3;
+    private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3,
+            initialMaxPointPickups = 2, initialMaxExpiringPickups = 2, minPointPickups = 1, minExpiringPickups = 1;
     private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f;
+
     private GameData _gameData;
 
     private final ExpiringPickupFactory _pickupFactory;
@@ -22,8 +23,10 @@ public class GameManager {
     private final Array<GameSystem> systems = new Array<>();
     public GameManager(SpriteBatch batch) {
         _batch = batch;
-        _pickupFactory = new RandomExpiringPickupFactory(new SpeedDownFactory(), new SpeedUpFactory(),
-                new DirectionReverseFactory(), new GodModeFactory());
+        _pickupFactory = new RandomExpiringPickupFactory(
+                new SpeedDownFactory(), new SpeedUpFactory(), new DirectionReverseFactory(),
+                new GodModeFactory(), new MorePickupsFactory(), new LessPickupsFactory()
+        );
         init();
     }
 
@@ -33,8 +36,8 @@ public class GameManager {
         var snakeController = new SnakeKeyboardController(snake);
 
         _gameData = new GameData(board, snake,
-                snakeController, maxExpiringPickups, maxPointPickups,
-                initialMoveCoolDown, initialPickupCoolDown, pickupChance);
+                snakeController, initialMaxExpiringPickups, initialMaxPointPickups,
+                minExpiringPickups, minPointPickups, initialMoveCoolDown, initialPickupCoolDown, pickupChance);
 
         systems.add(new SnakeMovementSystem(_gameData));
         systems.add(new CollisionSystem(_gameData));

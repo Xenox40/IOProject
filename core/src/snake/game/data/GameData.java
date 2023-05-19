@@ -18,9 +18,11 @@ public class GameData {
     public final Array<Effect> appliedEffects = new Array<>();
     public final Queue<Effect> queuedEffects = new Queue<>();
     public int score;
-    public final int maxExpiringPickups, maxPointPickups;
+    public int maxExpiringPickups, maxPointPickups;
+
+    public final int minExpiringPickups, minPointPickups;
     public float moveCoolDown;
-    public final float pickupCoolDown, pickupChance;
+    public float pickupCoolDown, pickupChance;
 
     public boolean gameEnded;
 
@@ -28,12 +30,14 @@ public class GameData {
     public final Array<ExpiringPickupCell> expiringPickups = new Array<>();
 
     public GameData(Board board, Snake snake, SnakeController controller, int maxPickups, int maxPointPickups,
-                    float moveCoolDown, float pickupCoolDown, float pickupChance) {
+                    int minExpiringPickups, int minPointPickups, float moveCoolDown, float pickupCoolDown, float pickupChance) {
         this.board = board;
         this.snake = snake;
         this.controller = controller;
         this.maxExpiringPickups = maxPickups;
         this.maxPointPickups = maxPointPickups;
+        this.minExpiringPickups = minExpiringPickups;
+        this.minPointPickups = minPointPickups;
         this.moveCoolDown = moveCoolDown;
         this.pickupCoolDown = pickupCoolDown;
         this.pickupChance = pickupChance;
