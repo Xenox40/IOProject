@@ -48,6 +48,9 @@ public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> NegativePointTexture =
             new AssetDescriptor<>("pickup/negativepoint.png", Texture.class);
 
+    public static final AssetDescriptor<Texture> BombTexture =
+            new AssetDescriptor<>("pickup/bomb.png", Texture.class);
+
     public static final AssetDescriptor<BitmapFont> MonoFont =
             new AssetDescriptor<>("fonts/Mono.fnt", BitmapFont.class);
 
@@ -77,6 +80,7 @@ public class Assets implements Disposable {
         _manager.load(MorePickupsTexture);
         _manager.load(LessPickupsTexture);
         _manager.load(DirectionsReverseTexture);
+        _manager.load(BombTexture);
         _manager.load(NegativePointTexture);
         _manager.load(MonoFont);
         _manager.load(ComicSkin);
@@ -122,6 +126,9 @@ public class Assets implements Disposable {
         }
         if(obj instanceof NegativePointCell) {
             return _manager.get(NegativePointTexture);
+        }
+        if(obj instanceof BombCell) {
+            return _manager.get(BombTexture);
         }
         return null;
     }
