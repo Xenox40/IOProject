@@ -10,12 +10,11 @@ public class NegativePointCell extends ExpiringPickupCell {
 
     @Override
     public void act(GameData gameData) {
+        --gameData.score;
         var snake = gameData.snake;
         if(snake.getSize() == 1) {
-            snake.setDead();
-            gameData.gameEnded = true;
+            --gameData.lives;
         } else {
-            --gameData.score;
             snake.decreaseSize();
         }
     }

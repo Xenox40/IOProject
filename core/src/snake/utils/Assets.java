@@ -93,7 +93,7 @@ public class Assets implements Disposable {
         if(obj instanceof BrightTerrainCell) {
             return _manager.get(BrightTerrainTexture);
         }
-        if(obj instanceof SnakeHeadCell) {
+        if(obj instanceof SnakeHeadCell || obj instanceof HPIncreaseCell || obj instanceof HPDecreaseCell) {
             return _manager.get(HeadTexture);
         }
         if(obj instanceof SnakeBodyCell) {

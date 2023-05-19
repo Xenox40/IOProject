@@ -15,6 +15,7 @@ public class GameData {
     public final SnakeController controller;
 
     public boolean GodMode;
+    public int lives;
     public final Array<Effect> appliedEffects = new Array<>();
     public final Queue<Effect> queuedEffects = new Queue<>();
     public int score;
@@ -30,7 +31,7 @@ public class GameData {
     public final Array<ExpiringPickupCell> expiringPickups = new Array<>();
 
     public GameData(Board board, Snake snake, SnakeController controller, int maxPickups, int maxPointPickups,
-                    int minExpiringPickups, int minPointPickups, float moveCoolDown, float pickupCoolDown, float pickupChance) {
+                    int minExpiringPickups, int minPointPickups, float moveCoolDown, float pickupCoolDown, float pickupChance, int lives) {
         this.board = board;
         this.snake = snake;
         this.controller = controller;
@@ -41,5 +42,6 @@ public class GameData {
         this.moveCoolDown = moveCoolDown;
         this.pickupCoolDown = pickupCoolDown;
         this.pickupChance = pickupChance;
+        this.lives = lives;
     }
 }

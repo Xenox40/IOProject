@@ -1,10 +1,12 @@
 package snake.game.systems;
 
+import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
 import snake.utils.CollisionChecker;
 
 public class CollisionSystem implements GameSystem {
     private final GameData _gameData;
+    private Vector2 lastHeadPosition;
 
     public CollisionSystem(GameData gameData) {
         _gameData = gameData;
@@ -12,11 +14,16 @@ public class CollisionSystem implements GameSystem {
 
     @Override
     public void act(float delta) {
-        if(_gameData.gameEnded || _gameData.GodMode) return;
+        if(_gameData.gameEnded || _gameData.GodMode || !snakeMoved()) return;
+        lastHeadPosition = _gameData.snake.getHead().getPosition();
 
         if(CollisionChecker.isCollidingWithItself(_gameData.snake)) {
-            _gameData.snake.setDead();
-            _gameData.gameEnded = true;
+            --_gameData.lives;
         }
+    }
+
+    private boolean snakeMoved() {
+        var headPosition = _gameData.snake.getHead().getPosition();
+        return !headPosition.equals(lastHeadPosition);
     }
 }

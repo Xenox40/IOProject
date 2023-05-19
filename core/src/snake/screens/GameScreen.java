@@ -23,6 +23,7 @@ public class GameScreen implements Screen {
     private final GameManager _gameManager;
 
     private final Image _pointImage = new Image(Assets.getInstance().get(Assets.PointTexture));
+    private final Image _hpImage = new Image(Assets.getInstance().get(Assets.HeadTexture));
 
     private final BitmapFont _font;
 
@@ -53,6 +54,9 @@ public class GameScreen implements Screen {
         _pointImage.setScale(1.8f);
         _pointImage.setPosition(WIDTH / 2f - 2.8f * CELL_SIZE, HEIGHT - 2.3f * CELL_SIZE);
 
+        _hpImage.setScale(1.4f);
+        _hpImage.setPosition(WIDTH / 1.5f - 1.0f * CELL_SIZE, HEIGHT - 2.2f * CELL_SIZE);
+
         _gameManager = new GameManager(_game.batch());
     }
     @Override
@@ -68,9 +72,14 @@ public class GameScreen implements Screen {
         _game.batch().begin();
 
         _gameManager.draw();
+
         _pointImage.draw(_game.batch(), 1.0f);
         _font.draw(_game.batch(), Integer.toString(_gameManager.getScore()), _pointImage.getX() + 2.3f * CELL_SIZE,
                 _pointImage.getY() + 1.3f * CELL_SIZE);
+
+        _hpImage.draw(_game.batch(), 1.0f);
+        _font.draw(_game.batch(), Integer.toString(_gameManager.getLives()), _hpImage.getX() + 2.2f * CELL_SIZE,
+                _hpImage.getY() + 1.1f * CELL_SIZE);
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             Gdx.app.exit();

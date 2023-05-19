@@ -12,7 +12,7 @@ import snake.game.systems.*;
 
 public class GameManager {
     private final SpriteBatch _batch;
-    private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3,
+    private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3, initialLives = 1,
             initialMaxPointPickups = 2, initialMaxExpiringPickups = 2, minPointPickups = 1, minExpiringPickups = 1;
     private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f;
 
@@ -26,7 +26,7 @@ public class GameManager {
         _pickupFactory = new RandomExpiringPickupFactory(
                 new SpeedDownFactory(), new SpeedUpFactory(), new DirectionReverseFactory(),
                 new GodModeFactory(), new MorePickupsFactory(), new LessPickupsFactory(),
-                new NegativePointFactory()
+                new NegativePointFactory(), new HPIncreaseFactory(), new HPDecreaseFactory()
         );
         init();
     }
@@ -38,13 +38,14 @@ public class GameManager {
 
         _gameData = new GameData(board, snake,
                 snakeController, initialMaxExpiringPickups, initialMaxPointPickups,
-                minExpiringPickups, minPointPickups, initialMoveCoolDown, initialPickupCoolDown, pickupChance);
+                minExpiringPickups, minPointPickups, initialMoveCoolDown, initialPickupCoolDown, pickupChance, initialLives);
 
         systems.add(new SnakeMovementSystem(_gameData));
         systems.add(new CollisionSystem(_gameData));
         systems.add(new PointPickupSystem(_gameData));
         systems.add(new ExpiringPickupSystem(_gameData, _pickupFactory));
         systems.add(new EffectsSystem(_gameData));
+        systems.add(new EndGameSystem(_gameData));
     }
 
     public void step(float delta) {
@@ -67,6 +68,10 @@ public class GameManager {
 
     public int getScore() {
         return _gameData.score;
+    }
+
+    public int getLives() {
+        return _gameData.lives;
     }
     public void draw() {
         _gameData.board.draw(_batch);
