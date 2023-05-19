@@ -36,6 +36,9 @@ public class PointPickupSystem implements GameSystem {
                 pickups.removeValue(pickup, true);
             }
         }
+        while(_gameData.maxPointPickups < _gameData.pointPickups.size) {
+            _gameData.pointPickups.removeValue(_gameData.pointPickups.random(), true);
+        }
     }
 
     private void addNewPickup() {

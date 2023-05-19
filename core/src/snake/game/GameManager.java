@@ -27,7 +27,7 @@ public class GameManager {
                 new SpeedDownFactory(), new SpeedUpFactory(), new DirectionReverseFactory(),
                 new GodModeFactory(), new MorePickupsFactory(), new LessPickupsFactory(),
                 new NegativePointFactory(), new HPIncreaseFactory(), new HPDecreaseFactory(),
-                new BombFactory()
+                new BombFactory(), new MorePointsFactory(), new LessPointsFactory()
         );
         init();
     }
