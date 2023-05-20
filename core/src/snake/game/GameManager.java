@@ -55,6 +55,7 @@ public class GameManager {
         systems.add(new EffectsSystem(_gameData));
         systems.add(new SnakeSelfCollisionSystem(_gameData));
         systems.add(new EndGameSystem(_gameData));
+        systems.add(new RenderingSystem(_gameData, _batch));
     }
 
     public void step(float delta) {
@@ -81,21 +82,5 @@ public class GameManager {
 
     public int getLives() {
         return _gameData.lives;
-    }
-    public void draw() {
-        _gameData.board.draw(_batch);
-        for(var pickup : _gameData.pointPickups) {
-            pickup.draw(_batch);
-        }
-        for(var pickup : _gameData.expiringPickups) {
-            pickup.draw(_batch);
-        }
-        for(var wall : _gameData.walls) {
-            wall.draw(_batch);
-        }
-        for(var teleport : _gameData.teleports) {
-            teleport.draw(_batch);
-        }
-        _gameData.snake.draw(_batch);
     }
 }

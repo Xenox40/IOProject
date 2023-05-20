@@ -66,12 +66,9 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0.6f, 0.2f, 1.0f);
-
-        _gameManager.step(delta);
-
         _game.batch().begin();
 
-        _gameManager.draw();
+        _gameManager.step(delta);
 
         _pointImage.draw(_game.batch(), 1.0f);
         _font.draw(_game.batch(), Integer.toString(_gameManager.getScore()), _pointImage.getX() + 2.3f * CELL_SIZE,
