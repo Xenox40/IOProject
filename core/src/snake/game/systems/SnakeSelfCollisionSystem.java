@@ -4,11 +4,11 @@ import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
 import snake.utils.CollisionChecker;
 
-public class CollisionSystem implements GameSystem {
+public class SnakeSelfCollisionSystem implements GameSystem {
     private final GameData _gameData;
     private Vector2 lastHeadPosition;
 
-    public CollisionSystem(GameData gameData) {
+    public SnakeSelfCollisionSystem(GameData gameData) {
         _gameData = gameData;
     }
 

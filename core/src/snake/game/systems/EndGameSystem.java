@@ -11,6 +11,7 @@ public class EndGameSystem implements GameSystem {
 
     @Override
     public void act(float delta) {
+        if(_gameData.gameEnded) return;
         if(snakeDied()) {
             _gameData.gameEnded = true;
             _gameData.snake.setDead();

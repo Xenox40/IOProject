@@ -37,14 +37,17 @@ public class PointPickupSystem implements GameSystem {
     }
 
     private void addNewPickup() {
-        var position = CollisionChecker.getFreePosition(_gameData, false, true, true);
+        var position = CollisionChecker.getFreePosition(_gameData,
+                false, true, true, true);
         _gameData.pointPickups.add(new PointCell(position));
     }
 
     private boolean canBePickupAdded() {
-        if(_gameData.pointPickups.size + 1 > _gameData.maxPointPickups) return false;
+        if(_gameData.pointPickups.size == _gameData.maxPointPickups) return false;
 
-        return _gameData.snake.getSize() + _gameData.pointPickups.size + _gameData.expiringPickups.size + 1
-                <= _gameData.board.getWidth() * _gameData.board.getHeight();
+        var boardSize = _gameData.board.getWidth() * _gameData.board.getHeight();
+        var snakeSize = _gameData.snake.getSize();
+
+        return snakeSize + _gameData.pointPickups.size < boardSize;
     }
 }

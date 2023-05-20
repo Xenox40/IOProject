@@ -15,6 +15,7 @@ public class EffectsSystem implements GameSystem {
 
     @Override
     public void act(float delta) {
+        if(_gameData.gameEnded) return;
         handleActiveEffects(delta);
         handleQueue();
     }
