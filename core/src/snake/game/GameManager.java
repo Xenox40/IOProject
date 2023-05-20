@@ -12,8 +12,8 @@ import snake.game.systems.*;
 
 public class GameManager {
     private final SpriteBatch _batch;
-    private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3, initialLives = 1,
-            initialMaxPointPickups = 2, initialMaxExpiringPickups = 3, minPointPickups = 1, minExpiringPickups = 1;
+    private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3, initialLives = 3, maxWalls = 5,
+            initialMaxPointPickups = 3, initialMaxExpiringPickups = 3, minPointPickups = 1, minExpiringPickups = 1;
     private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f,
             minMoveCoolDown = 0.05f, maxMoveCoolDown = 0.2f, minPickupCoolDown = 1.0f;
 
@@ -41,7 +41,7 @@ public class GameManager {
 
         _gameData = new GameData(
                 board, snake, snakeController, initialMaxExpiringPickups, initialMaxPointPickups,
-                minExpiringPickups, minPointPickups, initialMoveCoolDown, initialPickupCoolDown,
+                minExpiringPickups, minPointPickups, maxWalls, initialMoveCoolDown, initialPickupCoolDown,
                 pickupChance, initialLives, minMoveCoolDown, maxMoveCoolDown,
                 minPickupCoolDown
         );
@@ -49,6 +49,7 @@ public class GameManager {
         systems.add(new SnakeMovementSystem(_gameData));
         systems.add(new CollisionSystem(_gameData));
         systems.add(new PointPickupSystem(_gameData));
+        systems.add(new WallsSystem(_gameData));
         systems.add(new ExpiringPickupSystem(_gameData, _pickupFactory));
         systems.add(new EffectsSystem(_gameData));
         systems.add(new EndGameSystem(_gameData));
@@ -65,7 +66,7 @@ public class GameManager {
     }
 
     public boolean gameWon() {
-        return _gameData.snake.getSize() == boardWidth * boardHeight;
+        return _gameData.gameWon;
     }
     public void restart() {
         systems.clear();
@@ -87,6 +88,9 @@ public class GameManager {
         }
         for(var pickup : _gameData.expiringPickups) {
             pickup.draw(_batch);
+        }
+        for(var wall : _gameData.walls) {
+            wall.draw(_batch);
         }
     }
 }

@@ -17,11 +17,6 @@ public class PointPickupSystem implements GameSystem {
 
         handlePickups();
 
-        if(_gameData.snake.getSize() == _gameData.board.getHeight() * _gameData.board.getWidth()) {
-            _gameData.gameEnded = true;
-            return;
-        }
-
         if(canBePickupAdded()) {
             addNewPickup();
         }
@@ -42,7 +37,7 @@ public class PointPickupSystem implements GameSystem {
     }
 
     private void addNewPickup() {
-        var position = CollisionChecker.getFreePosition(_gameData, false, true);
+        var position = CollisionChecker.getFreePosition(_gameData, false, true, true);
         _gameData.pointPickups.add(new PointCell(position));
     }
 

@@ -36,7 +36,8 @@ public class ExpiringPickupSystem implements GameSystem {
         for(var pickup : pickups.toArray(ExpiringPickupCell.class)) {
             pickup.addTime(delta);
             if(pickup.expired() ||
-                    CollisionChecker.AnyPointPickupContains(_gameData.pointPickups, pickup)) {
+                    CollisionChecker.AnyPointPickupContains(_gameData.pointPickups, pickup) ||
+                    CollisionChecker.AnyWallContains(_gameData.walls, pickup)) {
                 pickups.removeValue(pickup, true);
                 continue;
             }
@@ -49,7 +50,7 @@ public class ExpiringPickupSystem implements GameSystem {
 
     private void tryToAddNewPickup() {
         if(MathUtils.random.nextFloat() > _gameData.pickupChance) return;
-        var position = CollisionChecker.getFreePosition(_gameData, false, false);
+        var position = CollisionChecker.getFreePosition(_gameData, false, false, false);
         _gameData.expiringPickups.add(_factory.createOnPosition(position));
     }
 

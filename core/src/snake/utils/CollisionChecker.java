@@ -8,6 +8,7 @@ import snake.game.entities.cells.Cell;
 import snake.game.entities.cells.pickup.PointCell;
 import snake.game.entities.cells.pickup.expiringPickup.ExpiringPickupCell;
 import snake.game.entities.cells.snake.SnakeHeadCell;
+import snake.game.entities.cells.terrain.WallCell;
 
 public class CollisionChecker {
     public static boolean isCollidingWithItself(Snake snake) {
@@ -39,7 +40,7 @@ public class CollisionChecker {
         return false;
     }
 
-    public static boolean AnyExpiringPickupContains(Array<ExpiringPickupCell> pickups, Cell cell) {
+    private static boolean AnyExpiringPickupContains(Array<ExpiringPickupCell> pickups, Cell cell) {
         for(var pickup : pickups) {
             if(pickup.collidesWith(cell)) {
                 return true;
@@ -48,14 +49,24 @@ public class CollisionChecker {
         return false;
     }
 
-    public static Vector2 getFreePosition(GameData gameData, boolean skipPoint, boolean skipExpiring) {
+    public static boolean AnyWallContains(Array<WallCell> walls, Cell cell) {
+        for(var wall : walls) {
+            if(wall.collidesWith(cell)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static Vector2 getFreePosition(GameData gameData, boolean skipPoint, boolean skipExpiring,
+                                          boolean skipWall) {
         Array<Vector2> goodPositions = new Array<>();
 
         var board = gameData.board.getBoard();
 
         for(var row : board) {
             for(var cell: row) {
-                if(isGoodPosition(cell, gameData, skipPoint, skipExpiring)) {
+                if(isGoodPosition(cell, gameData, skipPoint, skipExpiring, skipWall)) {
                     goodPositions.add(cell.getPosition());
                 }
             }
@@ -64,7 +75,8 @@ public class CollisionChecker {
         return goodPositions.random();
     }
 
-    private static boolean isGoodPosition(Cell cell, GameData gameData, boolean skipPoint, boolean skipExpiring) {
+    private static boolean isGoodPosition(Cell cell, GameData gameData, boolean skipPoint, boolean skipExpiring,
+                                          boolean skipWall) {
         if(SnakeContains(gameData.snake, cell)) {
             return false;
         }
@@ -72,6 +84,9 @@ public class CollisionChecker {
             return false;
         }
         if (!skipExpiring && AnyExpiringPickupContains(gameData.expiringPickups, cell)) {
+            return false;
+        }
+        if(!skipWall && AnyWallContains(gameData.walls, cell)) {
             return false;
         }
         return true;

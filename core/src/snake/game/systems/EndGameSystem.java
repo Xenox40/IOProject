@@ -11,9 +11,25 @@ public class EndGameSystem implements GameSystem {
 
     @Override
     public void act(float delta) {
-        if(_gameData.lives <= 0) {
-            _gameData.snake.setDead();
+        if(snakeDied()) {
             _gameData.gameEnded = true;
+            _gameData.snake.setDead();
+            _gameData.gameWon = false;
+            return;
         }
+        if(allPointPickedUp()) {
+            _gameData.gameEnded = true;
+            _gameData.gameWon = true;
+        }
+    }
+
+    private boolean snakeDied() {
+        return _gameData.lives <= 0;
+    }
+
+    private boolean allPointPickedUp() {
+        var boardSize = _gameData.board.getHeight() * _gameData.board.getWidth();
+        var snakeSize = _gameData.snake.getSize();
+        return snakeSize == boardSize;
     }
 }
