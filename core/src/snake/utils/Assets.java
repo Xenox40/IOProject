@@ -11,10 +11,7 @@ import snake.game.entities.cells.pickup.PointCell;
 import snake.game.entities.cells.pickup.expiringPickup.*;
 import snake.game.entities.cells.snake.SnakeBodyCell;
 import snake.game.entities.cells.snake.SnakeHeadCell;
-import snake.game.entities.cells.terrain.BrightTerrainCell;
-import snake.game.entities.cells.terrain.DarkTerrainCell;
-import snake.game.entities.cells.terrain.TeleportCell;
-import snake.game.entities.cells.terrain.WallCell;
+import snake.game.entities.cells.terrain.*;
 
 public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> HeadTexture =
@@ -31,6 +28,12 @@ public class Assets implements Disposable {
 
     public static final AssetDescriptor<Texture> TeleportTexture =
             new AssetDescriptor<>("terrain/teleport.png", Texture.class);
+
+    public static final AssetDescriptor<Texture> SandTexture =
+            new AssetDescriptor<>("terrain/sand.png", Texture.class);
+
+    public static final AssetDescriptor<Texture> IceTexture =
+            new AssetDescriptor<>("terrain/ice.png", Texture.class);
     public static final AssetDescriptor<Texture> PointTexture =
             new AssetDescriptor<>("pickup/point.png", Texture.class);
 
@@ -94,6 +97,8 @@ public class Assets implements Disposable {
         _manager.load(DarkTerrainTexture);
         _manager.load(WallTexture);
         _manager.load(TeleportTexture);
+        _manager.load(SandTexture);
+        _manager.load(IceTexture);
         _manager.load(PointTexture);
         _manager.load(SpeedUpTexture);
         _manager.load(SpeedDownTexture);
@@ -127,6 +132,12 @@ public class Assets implements Disposable {
         }
         if(obj instanceof TeleportCell) {
             return _manager.get(TeleportTexture);
+        }
+        if(obj instanceof SandCell) {
+            return _manager.get(SandTexture);
+        }
+        if(obj instanceof IceCell) {
+            return _manager.get(IceTexture);
         }
         if(obj instanceof SnakeHeadCell || obj instanceof HPIncreaseCell || obj instanceof HPDecreaseCell) {
             return _manager.get(HeadTexture);

@@ -14,7 +14,7 @@ public class GameManager {
     private final SpriteBatch _batch;
     private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3, initialLives = 3, maxWalls = 5,
             initialMaxPointPickups = 3, initialMaxExpiringPickups = 3, minPointPickups = 1, minExpiringPickups = 1,
-            maxTeleports = 3;
+            maxTeleports = 3, speedAreaLength = 3, speedAreaCount = 3;
     private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f,
             minMoveCoolDown = 0.05f, maxMoveCoolDown = 0.2f, minPickupCoolDown = 1.0f;
 
@@ -42,8 +42,8 @@ public class GameManager {
 
         _gameData = new GameData(
                 board, snake, snakeController, initialMaxExpiringPickups, initialMaxPointPickups,
-                minExpiringPickups, minPointPickups, maxWalls, initialMoveCoolDown, initialPickupCoolDown,
-                pickupChance, initialLives, maxTeleports, minMoveCoolDown, maxMoveCoolDown,
+                minExpiringPickups, minPointPickups, maxWalls, speedAreaLength, initialMoveCoolDown, initialPickupCoolDown,
+                pickupChance, initialLives, maxTeleports, speedAreaCount, minMoveCoolDown, maxMoveCoolDown,
                 minPickupCoolDown
         );
 
@@ -54,6 +54,7 @@ public class GameManager {
         systems.add(new ExpiringPickupSystem(_gameData, _pickupFactory));
         systems.add(new EffectsSystem(_gameData));
         systems.add(new SnakeSelfCollisionSystem(_gameData));
+        systems.add(new SpeedTerrainSystem(_gameData));
         systems.add(new EndGameSystem(_gameData));
         systems.add(new RenderingSystem(_gameData, _batch));
     }

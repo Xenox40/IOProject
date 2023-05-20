@@ -29,7 +29,7 @@ public class WallsSystem implements GameSystem {
                 walls.removeValue(wall, true);
                 continue;
             }
-            if(head.collidesWith(wall)) {
+            if(!_gameData.GodMode && head.collidesWith(wall)) {
                 --_gameData.lives;
                 walls.removeValue(wall, true);
             }

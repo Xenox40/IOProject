@@ -25,14 +25,14 @@ public class GameData {
     public boolean GodMode, gameEnded, gameWon;
     public int maxExpiringPickups, maxPointPickups, score, lives;
 
-    public final int minExpiringPickups, minPointPickups, maxWalls, maxTeleports;
+    public final int minExpiringPickups, minPointPickups, maxWalls, maxTeleports, speedAreaLength, speedAreaCount;
     public float moveCoolDown, pickupCoolDown;
     public final float pickupChance, minMoveCoolDown, maxMoveCoolDown, minPickupCoolDown;
 
 
 
     public GameData(Board board, Snake snake, SnakeController controller, int maxPickups, int maxPointPickups,
-                    int minExpiringPickups, int minPointPickups, int maxWalls, float moveCoolDown, float pickupCoolDown, float pickupChance, int lives, int maxTeleports, float minMoveCoolDown, float maxMoveCooldown, float minPickupCoolDown) {
+                    int minExpiringPickups, int minPointPickups, int maxWalls, int speedAreaLength, float moveCoolDown, float pickupCoolDown, float pickupChance, int lives, int maxTeleports, int speedAreaCount, float minMoveCoolDown, float maxMoveCooldown, float minPickupCoolDown) {
         this.board = board;
         this.snake = snake;
         this.controller = controller;
@@ -41,11 +41,13 @@ public class GameData {
         this.minExpiringPickups = minExpiringPickups;
         this.minPointPickups = minPointPickups;
         this.maxWalls = maxWalls;
+        this.speedAreaLength = speedAreaLength;
         this.moveCoolDown = moveCoolDown;
         this.pickupCoolDown = pickupCoolDown;
         this.pickupChance = pickupChance;
         this.lives = lives;
         this.maxTeleports = maxTeleports;
+        this.speedAreaCount = speedAreaCount;
         this.minMoveCoolDown = minMoveCoolDown;
         this.maxMoveCoolDown = maxMoveCooldown;
         this.minPickupCoolDown = minPickupCoolDown;
