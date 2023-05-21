@@ -56,9 +56,9 @@ public class OptionsScreen implements Screen {
         _initialSliderValueLabel = new Label("", initialSliderLabelsStyle);
         var titleLabel = new Label("Options", skin, "title");
 
-        var minSliderTitle = new Label("Min move cool down", minSliderLabelsStyle);
-        var maxSliderTitle = new Label("Max move cool down", maxSliderLabelsStyle);
-        var initialSliderTitle = new Label("Initial move cool down", initialSliderLabelsStyle);
+        var minSliderTitle = new Label("Min move interval", minSliderLabelsStyle);
+        var maxSliderTitle = new Label("Max move interval", maxSliderLabelsStyle);
+        var initialSliderTitle = new Label("Initial move interval", initialSliderLabelsStyle);
 
         _minCoolDownSlider = new Slider(0, 0, 0.01f,
                 false, skin);
