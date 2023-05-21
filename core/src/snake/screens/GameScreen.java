@@ -35,7 +35,6 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(_stage);
 
         _font = Assets.getInstance().get(Assets.MonoFont);
-        _font.setColor(1f, 1f, 1f, 1f);
         _font.getData().setScale(0.8f);
 
         Skin skin = Assets.getInstance().get(Assets.ComicSkin);
