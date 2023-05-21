@@ -2,13 +2,20 @@ package snake;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import snake.enums.ScreenType;
+import snake.screens.ControlsScreen;
 import snake.screens.GameScreen;
+import snake.screens.MenuScreen;
+import snake.screens.OptionsScreen;
 import snake.utils.Assets;
 
 
 public class SnakeGame extends Game {
 	private Assets _assets;
 	private SpriteBatch _batch;
+	private MenuScreen _menuScreen;
+	private OptionsScreen _optionsScreen;
+	private ControlsScreen _controlsScreen;
 	private GameScreen _gameScreen;
 
 	@Override
@@ -20,8 +27,26 @@ public class SnakeGame extends Game {
 		_assets.load();
 		_assets.finishLoading();
 
-		_gameScreen = new GameScreen(this);
-		setScreen(_gameScreen);
+		_menuScreen = new MenuScreen(this);
+		setScreen(_menuScreen);
+	}
+
+	public void changeScreen(ScreenType screenType) {
+		switch (screenType) {
+			case Menu -> setScreen(_menuScreen);
+			case Options -> {
+				if (_optionsScreen == null) _optionsScreen = new OptionsScreen(this);
+				setScreen(_optionsScreen);
+			}
+			case Controls -> {
+				if(_controlsScreen == null) _controlsScreen = new ControlsScreen(this);
+				setScreen(_controlsScreen);
+			}
+			case Game -> {
+				if (_gameScreen == null) _gameScreen = new GameScreen(this);
+				setScreen(_gameScreen);
+			}
+		}
 	}
 
 	public SpriteBatch batch() {
@@ -31,6 +56,9 @@ public class SnakeGame extends Game {
 	public void dispose () {
 		_assets.dispose();
 		_batch.dispose();
-		_gameScreen.dispose();
+		_menuScreen.dispose();
+		if(_optionsScreen != null) _optionsScreen.dispose();
+		if(_controlsScreen != null) _controlsScreen.dispose();
+		if(_gameScreen != null) _gameScreen.dispose();
 	}
 }
