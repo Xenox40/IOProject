@@ -2,6 +2,7 @@ package snake.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -36,19 +37,25 @@ public class ControlsScreen implements Screen {
 
         Label controls = new Label("Controls", skin, "title");
         var controlLabels = new Label[4][3];
+        var secondColStyle = new Label.LabelStyle();
+        secondColStyle.font = skin.getFont("button");
+        secondColStyle.fontColor = Color.BLUE;
+        var thirdColStyle = new Label.LabelStyle();
+        thirdColStyle.font = skin.getFont("button");
+        thirdColStyle.fontColor = Color.GOLD;
 
         controlLabels[0][0] = new Label("Up", skin, "big");
-        controlLabels[0][1] = new Label("W", skin, "big");
-        controlLabels[0][2] = new Label("UP arrow", skin, "big");
+        controlLabels[0][1] = new Label("W", secondColStyle);
+        controlLabels[0][2] = new Label("UP arrow", thirdColStyle);
         controlLabels[1][0] = new Label("Right", skin, "big");
-        controlLabels[1][1] = new Label("D", skin, "big");
-        controlLabels[1][2] = new Label("Right arrow", skin, "big");
+        controlLabels[1][1] = new Label("D", secondColStyle);
+        controlLabels[1][2] = new Label("Right arrow", thirdColStyle);
         controlLabels[2][0] = new Label("Down", skin, "big");
-        controlLabels[2][1] = new Label("S", skin, "big");
-        controlLabels[2][2] = new Label("Down arrow", skin, "big");
+        controlLabels[2][1] = new Label("S", secondColStyle);
+        controlLabels[2][2] = new Label("Down arrow", thirdColStyle);
         controlLabels[3][0] = new Label("Left", skin, "big");
-        controlLabels[3][1] = new Label("A", skin, "big");
-        controlLabels[3][2] = new Label("Left arrow", skin, "big");
+        controlLabels[3][1] = new Label("A", secondColStyle);
+        controlLabels[3][2] = new Label("Left arrow", thirdColStyle);
 
         _table.setFillParent(true);
         _table.add(controls).colspan(3).center();
