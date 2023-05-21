@@ -8,6 +8,7 @@ import snake.game.data.GameData;
 import snake.game.entities.Board;
 import snake.game.entities.Snake;
 import snake.game.systems.*;
+import snake.utils.PreferencesManager;
 
 
 public class GameManager {
@@ -15,14 +16,15 @@ public class GameManager {
     private static final int boardWidth = 16, boardHeight = 16, initialSnakeSize = 3, initialLives = 3, maxWalls = 5,
             initialMaxPointPickups = 3, initialMaxExpiringPickups = 3, minPointPickups = 1, minExpiringPickups = 1,
             maxTeleports = 3, speedAreaLength = 3, speedAreaCount = 3;
-    private static final float initialMoveCoolDown = 0.12f, initialPickupCoolDown = 5f, pickupChance = 0.7f,
-            minMoveCoolDown = 0.05f, maxMoveCoolDown = 0.2f, minPickupCoolDown = 1.0f;
+    private final float initialMoveCoolDown, minMoveCoolDown, maxMoveCoolDown;
+    private static final float initialPickupCoolDown = 5f, pickupChance = 0.7f, minPickupCoolDown = 1.0f;
 
     private GameData _gameData;
 
     private final ExpiringPickupFactory _pickupFactory;
 
     private final Array<GameSystem> systems = new Array<>();
+
     public GameManager(SpriteBatch batch) {
         _batch = batch;
         _pickupFactory = new RandomExpiringPickupFactory(
@@ -32,6 +34,11 @@ public class GameManager {
                 new BombFactory(), new MorePointsFactory(), new LessPointsFactory(),
                 new MoreFrequentPickupsFactory(), new LessFrequentPickupsFactory()
         );
+
+        var _preferencesManager = PreferencesManager.getInstance();
+        initialMoveCoolDown = _preferencesManager.getInitialCoolDown();
+        minMoveCoolDown = _preferencesManager.getMinCoolDown();
+        maxMoveCoolDown = _preferencesManager.getMaxCoolDown();
         init();
     }
 
