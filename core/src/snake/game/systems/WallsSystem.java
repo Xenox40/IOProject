@@ -2,7 +2,7 @@ package snake.game.systems;
 
 import snake.game.data.GameData;
 import snake.game.entities.cells.terrain.WallCell;
-import snake.utils.CollisionChecker;
+import snake.game.utils.CollisionChecker;
 
 public class WallsSystem implements GameSystem {
     private final GameData _gameData;

@@ -3,7 +3,6 @@ package snake.game.systems;
 import com.badlogic.gdx.utils.Array;
 import snake.game.data.GameData;
 import snake.game.entities.effects.ActingEffect;
-import snake.game.entities.effects.NonRenewableEffect;
 import snake.game.entities.effects.RenewableEffect;
 
 public class EffectsSystem implements GameSystem {
@@ -43,8 +42,8 @@ public class EffectsSystem implements GameSystem {
                     if(effect instanceof RenewableEffect renewableEffect) {
                         renewableEffect.renew();
                         forAddition = false;
-                    } else if(effect instanceof NonRenewableEffect nonRenewableEffect) {
-                        nonRenewableEffect.expire(_gameData);
+                    } else {
+                        effect.expire(_gameData);
                         _gameData.appliedEffects.removeIndex(i);
                         forAddition = false;
                     }

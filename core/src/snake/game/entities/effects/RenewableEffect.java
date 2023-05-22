@@ -5,5 +5,5 @@ public abstract class RenewableEffect extends Effect {
         super(timeLeft);
     }
 
-    public abstract void renew() ;
+    public abstract void renew();
 }

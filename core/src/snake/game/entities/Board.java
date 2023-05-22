@@ -24,7 +24,7 @@ public class Board {
         return _cells.size;
     }
 
-    public Array<Array<TerrainCell>> getBoard() {
+    public Array<Array<TerrainCell>> getCells() {
         return _cells;
     }
     public void draw(SpriteBatch batch) {

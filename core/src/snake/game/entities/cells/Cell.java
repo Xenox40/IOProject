@@ -3,10 +3,9 @@ package snake.game.entities.cells;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import snake.utils.Assets;
-import snake.utils.Helper;
+import snake.assets.Assets;
 
-import static snake.utils.GlobalVariables.CELL_SIZE;
+import static snake.GlobalVariables.CELL_SIZE;
 
 public abstract class Cell {
     protected final Sprite _sprite = new Sprite(Assets.getInstance().getTexture(this), CELL_SIZE, CELL_SIZE);
@@ -23,7 +22,7 @@ public abstract class Cell {
     }
 
     public void setPosition(int gridX, int gridY) {
-        var posInPixels = Helper.gridToPixels(gridX, gridY);
+        var posInPixels = new Vector2(gridX * CELL_SIZE, gridY * CELL_SIZE);
         _sprite.setPosition(posInPixels.x, posInPixels.y);
     }
     public void setPosition(float px, float py) {

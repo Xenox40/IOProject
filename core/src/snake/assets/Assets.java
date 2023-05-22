@@ -1,4 +1,4 @@
-package snake.utils;
+package snake.assets;
 
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetManager;

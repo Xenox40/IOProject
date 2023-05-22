@@ -1,10 +1,10 @@
 package snake.game.systems;
 
 import com.badlogic.gdx.math.MathUtils;
-import snake.factories.ExpiringPickupFactory;
 import snake.game.data.GameData;
 import snake.game.entities.cells.pickup.expiringPickup.ExpiringPickupCell;
-import snake.utils.CollisionChecker;
+import snake.game.factories.ExpiringPickupFactory;
+import snake.game.utils.CollisionChecker;
 
 public class ExpiringPickupSystem implements GameSystem {
     private final GameData _gameData;

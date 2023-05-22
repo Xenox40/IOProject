@@ -7,9 +7,9 @@ import snake.game.entities.cells.snake.SnakeBodyCell;
 import snake.game.entities.cells.snake.SnakeCell;
 import snake.game.entities.cells.snake.SnakeHeadCell;
 
+import static snake.GlobalVariables.CELL_SIZE;
 import static snake.enums.Direction.Right;
 import static snake.enums.Direction.prev;
-import static snake.utils.GlobalVariables.CELL_SIZE;
 
 public class Snake {
     /*

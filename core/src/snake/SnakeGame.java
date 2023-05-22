@@ -2,12 +2,12 @@ package snake;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import snake.assets.Assets;
 import snake.enums.ScreenType;
 import snake.screens.ControlsScreen;
 import snake.screens.GameScreen;
 import snake.screens.MenuScreen;
 import snake.screens.OptionsScreen;
-import snake.utils.Assets;
 
 
 public class SnakeGame extends Game {

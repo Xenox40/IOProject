@@ -32,7 +32,9 @@ public class GameData {
 
 
     public GameData(Board board, Snake snake, SnakeController controller, int maxPickups, int maxPointPickups,
-                    int minExpiringPickups, int minPointPickups, int maxWalls, int speedAreaLength, float moveCoolDown, float pickupCoolDown, float pickupChance, int lives, int maxTeleports, int speedAreaCount, float minMoveCoolDown, float maxMoveCooldown, float minPickupCoolDown) {
+                    int minExpiringPickups, int minPointPickups, int maxWalls, int speedAreaLength, float moveCoolDown,
+                    float pickupCoolDown, float pickupChance, int lives, int maxTeleports, int speedAreaCount,
+                    float minMoveCoolDown, float maxMoveCoolDown, float minPickupCoolDown) {
         this.board = board;
         this.snake = snake;
         this.controller = controller;
@@ -49,7 +51,7 @@ public class GameData {
         this.maxTeleports = maxTeleports;
         this.speedAreaCount = speedAreaCount;
         this.minMoveCoolDown = minMoveCoolDown;
-        this.maxMoveCoolDown = maxMoveCooldown;
+        this.maxMoveCoolDown = maxMoveCoolDown;
         this.minPickupCoolDown = minPickupCoolDown;
     }
 }

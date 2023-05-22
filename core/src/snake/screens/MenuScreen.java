@@ -11,10 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import snake.SnakeGame;
+import snake.assets.Assets;
 import snake.enums.ScreenType;
-import snake.utils.Assets;
 
-import static snake.utils.GlobalVariables.BACKGROUND_COLOR;
+import static snake.GlobalVariables.BACKGROUND_COLOR;
 
 public class MenuScreen implements Screen {
     private final SnakeGame _game;

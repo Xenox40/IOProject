@@ -3,7 +3,7 @@ package snake.game.systems;
 import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
 import snake.game.entities.cells.terrain.TeleportCell;
-import snake.utils.CollisionChecker;
+import snake.game.utils.CollisionChecker;
 
 public class TeleportSystem implements GameSystem{
     private final GameData _gameData;

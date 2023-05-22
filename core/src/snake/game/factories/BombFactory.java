@@ -1,12 +1,12 @@
-package snake.factories;
+package snake.game.factories;
 
 import com.badlogic.gdx.math.Vector2;
+import snake.game.entities.cells.pickup.expiringPickup.BombCell;
 import snake.game.entities.cells.pickup.expiringPickup.ExpiringPickupCell;
-import snake.game.entities.cells.pickup.expiringPickup.SpeedUpCell;
 
-public class SpeedUpFactory implements ExpiringPickupFactory {
+public class BombFactory implements ExpiringPickupFactory{
     @Override
     public ExpiringPickupCell createOnPosition(Vector2 position) {
-        return new SpeedUpCell(position);
+        return new BombCell(position);
     }
 }

@@ -2,13 +2,13 @@ package snake.game;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
-import snake.factories.*;
 import snake.game.controllers.SnakeKeyboardController;
 import snake.game.data.GameData;
 import snake.game.entities.Board;
 import snake.game.entities.Snake;
+import snake.game.factories.*;
 import snake.game.systems.*;
-import snake.utils.PreferencesManager;
+import snake.preferences.PreferencesManager;
 
 
 public class GameManager {
@@ -17,7 +17,7 @@ public class GameManager {
             initialMaxPointPickups = 3, initialMaxExpiringPickups = 3, minPointPickups = 1, minExpiringPickups = 1,
             maxTeleports = 3, speedAreaLength = 3, speedAreaCount = 3;
     private final float initialMoveCoolDown, minMoveCoolDown, maxMoveCoolDown;
-    private static final float initialPickupCoolDown = 5f, pickupChance = 0.7f, minPickupCoolDown = 1.0f;
+    private static final float initialPickupCoolDown = 1f, pickupChance = 1.7f, minPickupCoolDown = 1.0f;
 
     private GameData _gameData;
 

@@ -2,7 +2,7 @@ package snake.game.systems;
 
 import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
-import snake.utils.CollisionChecker;
+import snake.game.utils.CollisionChecker;
 
 public class SnakeSelfCollisionSystem implements GameSystem {
     private final GameData _gameData;

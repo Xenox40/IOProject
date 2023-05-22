@@ -2,7 +2,7 @@ package snake.game.systems;
 
 import snake.game.data.GameData;
 import snake.game.entities.cells.pickup.PointCell;
-import snake.utils.CollisionChecker;
+import snake.game.utils.CollisionChecker;
 
 public class PointPickupSystem implements GameSystem {
     private final GameData _gameData;

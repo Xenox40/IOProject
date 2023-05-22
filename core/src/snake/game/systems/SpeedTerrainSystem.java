@@ -45,7 +45,7 @@ public class SpeedTerrainSystem implements GameSystem {
                 newCell = new SandCell(col, row);
             }
             _speedCells.add(newCell);
-            board.getBoard().get(row).set(col, newCell);
+            board.getCells().get(row).set(col, newCell);
         }
     }
 
@@ -63,7 +63,7 @@ public class SpeedTerrainSystem implements GameSystem {
                 newCell = new SandCell(col, row);
             }
             _speedCells.add(newCell);
-            board.getBoard().get(row).set(col, newCell);
+            board.getCells().get(row).set(col, newCell);
         }
     }
 

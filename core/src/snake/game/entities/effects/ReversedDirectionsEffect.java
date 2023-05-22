@@ -2,7 +2,7 @@ package snake.game.entities.effects;
 
 import snake.game.data.GameData;
 
-public class ReversedDirectionsEffect extends NonRenewableEffect {
+public class ReversedDirectionsEffect extends Effect {
     public ReversedDirectionsEffect() {
         super(5);
     }

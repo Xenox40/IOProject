@@ -2,7 +2,7 @@ package snake.game.entities.cells.snake;
 
 import snake.game.entities.cells.Cell;
 
-import static snake.utils.GlobalVariables.DEAD_COLOR;
+import static snake.GlobalVariables.DEAD_COLOR;
 
 public abstract class SnakeCell extends Cell {
     public SnakeCell(int gridX, int gridY) {

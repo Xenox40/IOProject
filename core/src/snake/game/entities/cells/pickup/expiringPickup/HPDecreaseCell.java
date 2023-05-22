@@ -3,7 +3,7 @@ package snake.game.entities.cells.pickup.expiringPickup;
 import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
 
-import static snake.utils.GlobalVariables.DEAD_COLOR;
+import static snake.GlobalVariables.DEAD_COLOR;
 
 public class HPDecreaseCell extends ExpiringPickupCell{
     public HPDecreaseCell(Vector2 position) {

@@ -1,4 +1,4 @@
-package snake.utils;
+package snake.game.utils;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -61,7 +61,7 @@ public class CollisionChecker {
                                           boolean skipWall, boolean skipTeleport) {
         Array<Vector2> goodPositions = new Array<>();
 
-        var board = gameData.board.getBoard();
+        var board = gameData.board.getCells();
 
         for(var row : board) {
             for(var cell: row) {

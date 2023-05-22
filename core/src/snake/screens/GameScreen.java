@@ -11,11 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.ScreenUtils;
 import snake.SnakeGame;
+import snake.assets.Assets;
 import snake.enums.ScreenType;
 import snake.game.GameManager;
-import snake.utils.Assets;
 
-import static snake.utils.GlobalVariables.*;
+import static snake.GlobalVariables.*;
 
 
 public class GameScreen implements Screen {
