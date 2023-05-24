@@ -3,18 +3,18 @@ package snake.game.systems;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.Array;
 import snake.game.data.GameData;
-import snake.game.entities.cells.terrain.IceCell;
-import snake.game.entities.cells.terrain.SandCell;
 import snake.game.entities.cells.terrain.TerrainCell;
+import snake.game.entities.cells.terrain.speed.IceCell;
+import snake.game.entities.cells.terrain.speed.SandCell;
+import snake.game.entities.cells.terrain.speed.SpeedTerrainCell;
 
-public class SpeedTerrainSystem implements GameSystem {
-    private final GameData _gameData;
-    private final Array<TerrainCell> _speedCells = new Array<>();
+public class SpeedTerrainSystem extends GameSystem {
+    private final Array<SpeedTerrainCell> _speedCells = new Array<>();
 
     private float currentBonus;
 
     public SpeedTerrainSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
         init();
     }
 
@@ -38,7 +38,7 @@ public class SpeedTerrainSystem implements GameSystem {
         var speedUp = MathUtils.randomBoolean();
         for(int i = 0; i < length; ++i) {
             var col = startPoint + i;
-            TerrainCell newCell;
+            SpeedTerrainCell newCell;
             if(speedUp) {
                 newCell = new IceCell(col, row);
             } else {
@@ -56,7 +56,7 @@ public class SpeedTerrainSystem implements GameSystem {
         var speedUp = MathUtils.randomBoolean();
         for(int i = 0; i < length; ++i) {
             var row = startPoint + i;
-            TerrainCell newCell;
+            SpeedTerrainCell newCell;
             if(speedUp) {
                 newCell = new IceCell(col, row);
             } else {

@@ -4,11 +4,10 @@ import snake.game.data.GameData;
 import snake.game.entities.cells.terrain.WallCell;
 import snake.game.utils.CollisionChecker;
 
-public class WallsSystem implements GameSystem {
-    private final GameData _gameData;
+public class WallsSystem extends GameSystem {
 
     public WallsSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
 
     @Override

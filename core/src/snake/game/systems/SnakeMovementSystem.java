@@ -2,13 +2,13 @@ package snake.game.systems;
 
 import snake.game.data.GameData;
 
-public class SnakeMovementSystem implements GameSystem {
-    private final GameData _gameData;
+public class SnakeMovementSystem extends GameSystem {
     private float _timeFromLastMove = 0.0f;
 
     public SnakeMovementSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
+
 
     @Override
     public void act(float delta) {

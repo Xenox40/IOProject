@@ -6,14 +6,13 @@ import snake.game.entities.cells.pickup.expiringPickup.ExpiringPickupCell;
 import snake.game.factories.ExpiringPickupFactory;
 import snake.game.utils.CollisionChecker;
 
-public class ExpiringPickupSystem implements GameSystem {
-    private final GameData _gameData;
+public class ExpiringPickupSystem extends GameSystem {
     private final ExpiringPickupFactory _factory;
 
     private float _lastPickup = 0.0f;
 
     public ExpiringPickupSystem(GameData gameData, ExpiringPickupFactory factory) {
-        _gameData = gameData;
+        super(gameData);
         _factory = factory;
     }
 

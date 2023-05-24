@@ -11,7 +11,12 @@ import snake.game.entities.cells.pickup.PointCell;
 import snake.game.entities.cells.pickup.expiringPickup.*;
 import snake.game.entities.cells.snake.SnakeBodyCell;
 import snake.game.entities.cells.snake.SnakeHeadCell;
-import snake.game.entities.cells.terrain.*;
+import snake.game.entities.cells.terrain.BrightTerrainCell;
+import snake.game.entities.cells.terrain.DarkTerrainCell;
+import snake.game.entities.cells.terrain.TeleportCell;
+import snake.game.entities.cells.terrain.WallCell;
+import snake.game.entities.cells.terrain.speed.IceCell;
+import snake.game.entities.cells.terrain.speed.SandCell;
 
 public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> HeadTexture =

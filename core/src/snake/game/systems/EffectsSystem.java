@@ -5,11 +5,11 @@ import snake.game.data.GameData;
 import snake.game.entities.effects.ActingEffect;
 import snake.game.entities.effects.RenewableEffect;
 
-public class EffectsSystem implements GameSystem {
-    private final GameData _gameData;
+public class EffectsSystem extends GameSystem {
+
 
     public EffectsSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
 
     @Override

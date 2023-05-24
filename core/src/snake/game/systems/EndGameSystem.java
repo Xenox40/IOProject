@@ -2,12 +2,11 @@ package snake.game.systems;
 
 import snake.game.data.GameData;
 
-public class EndGameSystem implements GameSystem {
-    private final GameData _gameData;
-
+public class EndGameSystem extends GameSystem {
     public EndGameSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
+
 
     @Override
     public void act(float delta) {

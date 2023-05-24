@@ -4,11 +4,11 @@ import snake.game.data.GameData;
 import snake.game.entities.cells.pickup.PointCell;
 import snake.game.utils.CollisionChecker;
 
-public class PointPickupSystem implements GameSystem {
-    private final GameData _gameData;
+public class PointPickupSystem extends GameSystem {
+
 
     public PointPickupSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
 
     @Override

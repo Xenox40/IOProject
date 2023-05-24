@@ -5,13 +5,13 @@ import snake.game.data.GameData;
 import snake.game.entities.cells.terrain.TeleportCell;
 import snake.game.utils.CollisionChecker;
 
-public class TeleportSystem implements GameSystem{
-    private final GameData _gameData;
+public class TeleportSystem extends GameSystem{
     private Vector2 _lastHeadPosition;
 
     public TeleportSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
+
 
     @Override
     public void act(float delta) {

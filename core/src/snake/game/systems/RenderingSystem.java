@@ -3,13 +3,12 @@ package snake.game.systems;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import snake.game.data.GameData;
 
-public class RenderingSystem implements GameSystem{
+public class RenderingSystem extends GameSystem{
 
     private final SpriteBatch _batch;
-    private final GameData _gameData;
 
     public RenderingSystem(GameData gameData, SpriteBatch batch) {
-        _gameData = gameData;
+        super(gameData);
         _batch = batch;
     }
 

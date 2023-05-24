@@ -4,13 +4,13 @@ import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
 import snake.game.utils.CollisionChecker;
 
-public class SnakeSelfCollisionSystem implements GameSystem {
-    private final GameData _gameData;
+public class SnakeSelfCollisionSystem extends GameSystem {
     private Vector2 lastHeadPosition;
 
     public SnakeSelfCollisionSystem(GameData gameData) {
-        _gameData = gameData;
+        super(gameData);
     }
+
 
     @Override
     public void act(float delta) {

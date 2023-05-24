@@ -25,6 +25,7 @@ public class SnakeKeyboardController extends SnakeController {
     }
 
 
+    @Override
     public void handleInputEvent() {
         for(int i = 0; i < 4; ++i) {
             if(keyPressed(_keys.get(i))) {
