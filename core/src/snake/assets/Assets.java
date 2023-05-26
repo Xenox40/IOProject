@@ -6,17 +6,6 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Disposable;
-import snake.game.entities.cells.Cell;
-import snake.game.entities.cells.pickup.PointCell;
-import snake.game.entities.cells.pickup.expiringPickup.*;
-import snake.game.entities.cells.snake.SnakeBodyCell;
-import snake.game.entities.cells.snake.SnakeHeadCell;
-import snake.game.entities.cells.terrain.BrightTerrainCell;
-import snake.game.entities.cells.terrain.DarkTerrainCell;
-import snake.game.entities.cells.terrain.TeleportCell;
-import snake.game.entities.cells.terrain.WallCell;
-import snake.game.entities.cells.terrain.speed.IceCell;
-import snake.game.entities.cells.terrain.speed.SandCell;
 
 public class Assets implements Disposable {
     public static final AssetDescriptor<Texture> HeadTexture =
@@ -123,73 +112,6 @@ public class Assets implements Disposable {
 
     public void finishLoading() {
         _manager.finishLoading();
-    }
-
-    public Texture getTexture(Cell obj) {
-        if(obj instanceof DarkTerrainCell) {
-            return _manager.get(DarkTerrainTexture);
-        }
-        if(obj instanceof BrightTerrainCell) {
-            return _manager.get(BrightTerrainTexture);
-        }
-        if(obj instanceof WallCell) {
-            return _manager.get(WallTexture);
-        }
-        if(obj instanceof TeleportCell) {
-            return _manager.get(TeleportTexture);
-        }
-        if(obj instanceof SandCell) {
-            return _manager.get(SandTexture);
-        }
-        if(obj instanceof IceCell) {
-            return _manager.get(IceTexture);
-        }
-        if(obj instanceof SnakeHeadCell || obj instanceof HPIncreaseCell || obj instanceof HPDecreaseCell) {
-            return _manager.get(HeadTexture);
-        }
-        if(obj instanceof SnakeBodyCell) {
-            return _manager.get(BodyTexture);
-        }
-        if(obj instanceof PointCell) {
-            return _manager.get(PointTexture);
-        }
-        if(obj instanceof SpeedUpCell) {
-            return _manager.get(SpeedUpTexture);
-        }
-        if(obj instanceof SpeedDownCell) {
-            return _manager.get(SpeedDownTexture);
-        }
-        if(obj instanceof DirectionReverseCell) {
-            return _manager.get(DirectionsReverseTexture);
-        }
-        if(obj instanceof GodModeCell) {
-            return _manager.get(GodModeTexture);
-        }
-        if(obj instanceof MorePickupsCell) {
-            return _manager.get(MorePickupsTexture);
-        }
-        if(obj instanceof LessPickupsCell) {
-            return _manager.get(LessPickupsTexture);
-        }
-        if(obj instanceof NegativePointCell) {
-            return _manager.get(NegativePointTexture);
-        }
-        if(obj instanceof BombCell) {
-            return _manager.get(BombTexture);
-        }
-        if(obj instanceof MorePointsCell) {
-            return _manager.get(MorePointsTexture);
-        }
-        if(obj instanceof LessPointsCell) {
-            return _manager.get(LessPointsTexture);
-        }
-        if(obj instanceof MoreFrequentPickupsCell) {
-            return _manager.get(MoreFrequentPickupsTexture);
-        }
-        if(obj instanceof LessFrequentPickupsCell) {
-            return _manager.get(LessFrequentPickupsTexture);
-        }
-        return null;
     }
 
     public <T> T get(AssetDescriptor<T> assetDescriptor) {

@@ -1,11 +1,12 @@
 package snake.game.entities.cells.pickup.expiringPickup;
 
 import com.badlogic.gdx.math.Vector2;
+import snake.assets.Assets;
 import snake.game.data.GameData;
 
 public class MoreFrequentPickupsCell extends ExpiringPickupCell{
     public MoreFrequentPickupsCell(Vector2 position) {
-        super(position);
+        super(position, Assets.getInstance().get(Assets.MoreFrequentPickupsTexture));
     }
 
     @Override

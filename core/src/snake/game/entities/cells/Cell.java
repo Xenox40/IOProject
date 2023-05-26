@@ -1,23 +1,29 @@
 package snake.game.entities.cells;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
-import snake.assets.Assets;
 
 import static snake.GlobalVariables.CELL_SIZE;
 
 public abstract class Cell {
-    protected final Sprite _sprite = new Sprite(Assets.getInstance().getTexture(this), CELL_SIZE, CELL_SIZE);
+    protected final Sprite _sprite;
 
-    protected Cell(int gridX, int gridY) {
+    private Cell(Texture texture) {
+        _sprite = new Sprite(texture, CELL_SIZE, CELL_SIZE);
+    }
+    protected Cell(int gridX, int gridY, Texture texture) {
+        this(texture);
         setPosition(gridX, gridY);
     }
-    protected Cell(float px, float py) {
+    protected Cell(float px, float py, Texture texture) {
+        this(texture);
         setPosition(px, py);
     }
 
-    public Cell(Vector2 position) {
+    protected Cell(Vector2 position, Texture texture) {
+        this(texture);
         _sprite.setPosition(position.x, position.y);
     }
 

@@ -1,12 +1,13 @@
 package snake.game.entities.cells.snake;
 
+import com.badlogic.gdx.graphics.Texture;
 import snake.game.entities.cells.Cell;
 
 import static snake.GlobalVariables.DEAD_COLOR;
 
 public abstract class SnakeCell extends Cell {
-    public SnakeCell(int gridX, int gridY) {
-        super(gridX, gridY);
+    public SnakeCell(int gridX, int gridY, Texture texture) {
+        super(gridX, gridY, texture);
     }
 
     public void setDead() {
@@ -17,7 +18,7 @@ public abstract class SnakeCell extends Cell {
         _sprite.setAlpha(alpha);
     }
 
-    public SnakeCell(float px, float py) {
-        super(px, py);
+    public SnakeCell(float px, float py, Texture texture) {
+        super(px, py, texture);
     }
 }
