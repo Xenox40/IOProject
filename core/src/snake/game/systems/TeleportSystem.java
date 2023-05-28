@@ -2,6 +2,7 @@ package snake.game.systems;
 
 import com.badlogic.gdx.math.Vector2;
 import snake.game.data.GameData;
+import snake.game.entities.cells.snake.SnakeHeadCell;
 import snake.game.entities.cells.terrain.TeleportCell;
 import snake.game.utils.CollisionChecker;
 
@@ -21,15 +22,14 @@ public class TeleportSystem extends GameSystem{
         if(headPosition.equals(_lastHeadPosition)) {
             return;
         }
-        handleTeleports();
+        handleTeleports(head);
         while(canBeTeleportPlaced()) {
             addNewTeleport();
         }
         _lastHeadPosition = head.getPosition();
     }
 
-    private void handleTeleports() {
-        var head = _gameData.snake.getHead();
+    private void handleTeleports(SnakeHeadCell head) {
         var teleports = _gameData.teleports;
         for(var teleport : teleports.toArray(TeleportCell.class)) {
             if(CollisionChecker.AnyPointPickupContains(_gameData.pointPickups, teleport)) {

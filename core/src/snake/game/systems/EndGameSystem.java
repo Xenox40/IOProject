@@ -17,7 +17,7 @@ public class EndGameSystem extends GameSystem {
             _gameData.gameWon = false;
             return;
         }
-        if(allPointPickedUp()) {
+        if(allPointsPickedUp()) {
             _gameData.gameEnded = true;
             _gameData.gameWon = true;
         }
@@ -27,7 +27,7 @@ public class EndGameSystem extends GameSystem {
         return _gameData.lives <= 0;
     }
 
-    private boolean allPointPickedUp() {
+    private boolean allPointsPickedUp() {
         var boardSize = _gameData.board.getHeight() * _gameData.board.getWidth();
         var snakeSize = _gameData.snake.getSize();
         return snakeSize == boardSize;

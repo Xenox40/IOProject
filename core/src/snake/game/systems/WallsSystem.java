@@ -12,6 +12,7 @@ public class WallsSystem extends GameSystem {
 
     @Override
     public void act(float delta) {
+        if(_gameData.gameEnded) return;
         handleWalls();
         while(canBeWallPlaced()) {
             addNewWall();
@@ -19,7 +20,6 @@ public class WallsSystem extends GameSystem {
     }
 
     private void handleWalls() {
-        if(_gameData.gameEnded) return;
         var head = _gameData.snake.getHead();
         var walls = _gameData.walls;
         for(var wall : walls.toArray(WallCell.class)) {

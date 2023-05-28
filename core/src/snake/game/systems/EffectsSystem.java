@@ -41,12 +41,11 @@ public class EffectsSystem extends GameSystem {
                 if(effect.getClass() == newEffectClass) {
                     if(effect instanceof RenewableEffect renewableEffect) {
                         renewableEffect.renew();
-                        forAddition = false;
                     } else {
                         effect.expire(_gameData);
                         _gameData.appliedEffects.removeIndex(i);
-                        forAddition = false;
                     }
+                    forAddition = false;
                     break;
                 }
             }
