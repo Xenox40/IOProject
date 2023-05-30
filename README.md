@@ -1,4 +1,4 @@
-# IOProject - SNAKE
+# SNAKE
 ![snakeGif](https://user-images.githubusercontent.com/50521366/218258580-129e0a88-4117-433d-ad19-fa4ae4a3af23.gif)
 
 ## General Info
